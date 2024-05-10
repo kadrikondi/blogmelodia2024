@@ -1,16 +1,29 @@
-import React from "react";
 import ListGroup from "react-bootstrap/ListGroup";
+import React, { useState, useEffect } from "react";
+import { fetchPosts } from "../api/api";
 
-export default function LeftsideBar() {
+const LeftsideBar = () => {
+  const [titles, setTitles] = useState([]);
+
+  useEffect(() => {
+    fetchPosts()
+      .then((data) => {
+        // console.log(data);
+
+        setTitles(data);
+      })
+      .catch((error) => console.error("Error fetching posts:", error));
+  }, []);
+
   return (
     <div>
-      <ListGroup>
-        <ListGroup.Item>Buhari trvel to daura</ListGroup.Item>
-        <ListGroup.Item>Dapibus ac facilisis in</ListGroup.Item>
-        <ListGroup.Item>Morbi leo risus</ListGroup.Item>
-        <ListGroup.Item>Porta ac consectetur ac</ListGroup.Item>
-        <ListGroup.Item>Vestibulum at eros</ListGroup.Item>
-      </ListGroup>
+      {titles.map((title) => (
+        <ListGroup>
+          <ListGroup.Item key={title.id}>{title.title}</ListGroup.Item>
+        </ListGroup>
+      ))}
     </div>
   );
-}
+};
+
+export default LeftsideBar;

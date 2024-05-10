@@ -1,45 +1,43 @@
+import React, { useState, useEffect } from "react";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 
-function BlogList() {
+const BlogList = () => {
+  const [blog, setBlog] = useState([]);
+
+  useEffect(() => {
+    fetch("https://jsonplaceholder.typicode.com/posts")
+      .then((response) => response.json())
+      .then((data) => {
+        // console.log(data);
+
+        setBlog(data);
+      })
+      .catch((error) => console.error("Error fetching posts:", error));
+  }, []);
+
   return (
     <>
-      {" "}
-      <Card className="text-center">
-        <Card.Body>
-          <Card.Title>Buhari travel to Daura kano state</Card.Title>
-          <Card.Text>
-            With supporting text below as a natural lead-in to additional
-            content.
-          </Card.Text>
-          <Button variant="primary"> read more</Button>
-        </Card.Body>
-        <Card.Footer className="text-muted">2 days ago</Card.Footer>
-      </Card>
-      <Card className="text-center">
-        <Card.Body>
-          <Card.Title>tinubu buy lambo</Card.Title>
-          <Card.Text>
-            With supporting text below as a natural lead-in to additional
-            content.
-          </Card.Text>
-          <Button variant="primary"> read more</Button>
-        </Card.Body>
-        <Card.Footer className="text-muted">2 days ago</Card.Footer>
-      </Card>
-      <Card className="text-center">
-        <Card.Body>
-          <Card.Title>Buhari travel to Daura kano state</Card.Title>
-          <Card.Text>
-            With supporting text below as a natural lead-in to additional
-            content.
-          </Card.Text>
-          <Button variant="primary"> read more</Button>
-        </Card.Body>
-        <Card.Footer className="text-muted">2 days ago</Card.Footer>
-      </Card>
+      {blog.map((blo) => (
+        <Card className="text-center mt-5">
+          <Card.Body>
+            <Card.Title> {blo.title}</Card.Title>
+            <Card.Text>{blo.body}</Card.Text>
+            <Button variant="primary"> {blo.id}read more</Button>
+          </Card.Body>
+        </Card>
+      ))}
     </>
   );
-}
+};
 
 export default BlogList;
+
+{
+  /* {posts.map((post) => (
+          <li key={post.id}>
+            <h3>{post.title}</h3>
+            <p>{post.body}</p>
+          </li>
+        ))} */
+}

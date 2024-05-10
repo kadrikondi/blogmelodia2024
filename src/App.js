@@ -1,6 +1,9 @@
 import "./App.css";
 import HeaderBlog from "./component/layout/HeaderBlog";
 import Home from "./component/pages/Home";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import OurRouter from "./route";
+
 // import Photo from "./logo192.png";
 // import Header from "./component/Header";
 // import Posts from "./component/Posts";
@@ -16,24 +19,10 @@ function App() {
   let companyName = "Melodia Technology";
   return (
     <div className="App">
-      <HeaderBlog />
-      <Home />
-
-      {/* <Header company={companyName} />
-      <h1
-        style={{
-          color: "green",
-          backgroundColor: "black",
-          textAlign: "center",
-        }}
-      >
-        {" "}
-        Welcome to react {companyName}
-      </h1>
-      <Posts />
-      <p style={mystyle}>good moning</p>mj
-      <img src={Photo} alt="" />
-      <Counter /> */}
+      <Router>
+        <Route component={HeaderBlog} />
+        <Route component={OurRouter} />
+      </Router>
     </div>
   );
 }
