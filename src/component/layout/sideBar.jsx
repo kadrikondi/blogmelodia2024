@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import Image from "react-bootstrap/Image";
-
+import { Link } from "react-router-dom/cjs/react-router-dom.min";
 import Messo from "../../asset/messi.webp";
 import { fetchUsers } from "../api/api";
 
 const SideBar = () => {
-  const [user, setUsers] = useState(["fdffdf"]);
+  const [user, setUsers] = useState([]);
 
   useEffect(() => {
     fetchUsers()
@@ -17,20 +17,28 @@ const SideBar = () => {
   }, []);
   return (
     <div style={{ backgroundColor: "grey", color: "white", height: "500px" }}>
-      <Image
-        src={Messo}
-        roundedCircle
-        style={{ width: "60px", height: "60px", padding: "10px" }}
-      />{" "}
-      <span>Lionel Messi</span> <br />
+      <Link to="/userprofile">
+        <Image
+          src={Messo}
+          roundedCircle
+          style={{ width: "60px", height: "60px", padding: "10px" }}
+        />{" "}
+        <span>Lionel Messi</span>
+      </Link>
+      <br />
       {user.map((user) => (
         <>
-          <Image
-            src={user.avatar_url}
-            roundedCircle
-            style={{ width: "60px", height: "60px", padding: "10px" }}
-          />{" "}
-          <span>{user.login}</span> <br />
+          <Link
+            to={`/userprofile/${user.id}`}
+            style={{ color: "black", textDecoration: "none" }}
+          >
+            <Image
+              src={user.avatar_url}
+              roundedCircle
+              style={{ width: "60px", height: "60px", padding: "10px" }}
+            />{" "}
+            <span>{user.login}</span> <br />
+          </Link>
         </>
       ))}
     </div>

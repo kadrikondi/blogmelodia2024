@@ -1,7 +1,7 @@
 import "./App.css";
 import HeaderBlog from "./component/layout/HeaderBlog";
 import Home from "./component/pages/Home";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import OurRouter from "./route";
 
 // import Photo from "./logo192.png";

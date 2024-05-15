@@ -10,3 +10,8 @@ export const fetchUsers = () => {
   );
   // .then((data) => console.log(data));
 };
+export const fetchUser = async (id) => {
+  const response = await fetch(`https://api.github.com/user/${id}`);
+  return await response.json();
+  // .then((data) => console.log(data));
+};
