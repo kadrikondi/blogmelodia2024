@@ -27,7 +27,9 @@ function HeaderBlog() {
               {" "}
               <Link to="/">Home</Link>
             </Nav.Link>
-            <Nav.Link href="#link">create A blog</Nav.Link>
+            <Nav.Link>
+              <Link to="/createblog"> create A blog</Link>
+            </Nav.Link>
             <Nav.Link>
               {" "}
               <Link to="/users">User</Link>{" "}

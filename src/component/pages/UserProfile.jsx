@@ -45,12 +45,13 @@ function UserProfile() {
                 <Card.Text>{user.bio}</Card.Text>
                 <Button variant="primary" className="mr-5">
                   {" "}
-                  Followers300M
+                  Followers{" "}
+                  {/* {user.followers_url ? user.followers_url.length : null} */}
                 </Button>
 
                 <Button variant="primary" className="m-2">
                   {" "}
-                  Following 300M
+                  Following
                 </Button>
                 <Button variant="primary" className="m-2">
                   {" "}
